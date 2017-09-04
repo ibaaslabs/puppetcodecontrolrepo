@@ -48,11 +48,11 @@ docker::image {'ubuntu':
 	docker_file => '/tmp/Dockerfile',
 	}
 docker::run {'Helloworld':
-	image => 'ubuntu'
+	image => 'ubuntu',
 	command => '/bin/sh -c "while true; do echo hello world; sleep 1; done"',  
     }
 docker::run {'Goodbyeworld':
-	image => 'ubuntu'
+	image => 'ubuntu',
 	command => '/bin/sh -c "while true; do echo Goodbye world; sleep 1; done"',  
     }
 
