@@ -52,14 +52,14 @@ docker::image {'centos':
         image_tag => 'centos7',
                 }
 
-#docker::run {'Helloworld':
-#       image => 'ubuntu',
-#       command => '/bin/sh -c "while true; do echo hello world; sleep 1; done"',
-#      }
-#docker::run {'Goodbyeworld':
-#       image => 'ubuntu',
-#       command => '/bin/sh -c "while true; do echo Goodbye world; sleep 1; done"',
-#    }
+docker::run {'Helloworld':
+       image => 'ubuntu',
+       command => '/bin/sh -c "while true; do echo hello world; sleep 1; done"',
+      }
+docker::run {'Goodbyeworld':
+       image => 'ubuntu',
+       command => '/bin/sh -c "while true; do echo Goodbye world; sleep 1; done"',
+    }
 
 }
 
