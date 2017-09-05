@@ -31,29 +31,35 @@ node default {
 }
 
 node client1.puppet.net {
+
    tomcat::install { '/opt/tomcat8':
    source_url => 'https://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz'
                  }
+
    tomcat::instance { 'default':
    catalina_home => '/opt/tomcat8'
-                  }   
+                  }
 
-#Installing Docker pulling and running 
+#Installing Docker pulling and running
 
 include 'docker'
 
 docker::image {'ubuntu':
-	ensure => 'present',
-	image_tag => 'trusty',
-	docker_file => '/tmp/Dockerfile',
-	}
-docker::run {'Helloworld':
-	image => 'ubuntu',
-	command => '/bin/sh -c "while true; do echo hello world; sleep 1; done"',  
-    }
-docker::run {'Goodbyeworld':
-	image => 'ubuntu',
-	command => '/bin/sh -c "while true; do echo Goodbye world; sleep 1; done"',  
-    }
+        image_tag => 'xenial',
+                }
+
+docker::image {'centos':
+        image_tag => 'centos7',
+                }
+
+#docker::run {'Helloworld':
+#       image => 'ubuntu',
+#       command => '/bin/sh -c "while true; do echo hello world; sleep 1; done"',
+#      }
+#docker::run {'Goodbyeworld':
+#       image => 'ubuntu',
+#       command => '/bin/sh -c "while true; do echo Goodbye world; sleep 1; done"',
+#    }
 
 }
+
